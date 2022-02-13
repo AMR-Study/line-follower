@@ -39,16 +39,6 @@ def canny_edge_detection(image):
     canny_image = cv2.Canny(image_blur, 50, 150)
     return canny_image
 
-def line_detection(image, lines):
-    # lines_image 변수에 image 갯수의 배열 생성
-    lines_image = np.zeros_like(image)
-    if lines is not None :
-        for i in range(len(lines)):
-            for x1,y1,x2,y2 in lines[i]:
-                cv2.line(lines_image,(x1,y1),(x2,y2),(255,0,0), 10 )
-    return lines_image
-
-
 def roi_detection(image):
     # np.zero_like 함수는 매개변수로 받은 크기의 배열을 배열을 생성하며, 0으로 초기화 되어 있음
     # image_mask 변수에 image 갯수의 배열 생성
