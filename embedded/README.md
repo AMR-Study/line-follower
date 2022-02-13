@@ -1,6 +1,6 @@
 #F429ZI Project using by STM32CubeIDE
 
-##Project Status
+Project Status
 ---
 #OS
 * freeRTOS launched. 
