@@ -105,4 +105,4 @@ result_image = cv2.addWeighted(copy_image, 0.001, line_image, 0.8, 0.1, dtype=cv
 
 #image_show('roi_detection_image', roi_detection_image)
 image_show('line_image', line_image)
-#image_show('dst3', result_image)
+#image_show('dst3', result_image) 
