@@ -3,5 +3,5 @@
 Project Status
 ---
 #OS
-* freeRTOS launched. _If you want launch yourself, Using .ioc file._
+* freeRTOS launched. If you want launch yourself, Using .ioc file.
 
