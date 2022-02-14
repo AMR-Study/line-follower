@@ -12,7 +12,6 @@
 #include <stdarg.h>
 #include <string.h>
 
-int _write(int file, char *p, int len);
 void User_Printf(const char *fmt, ...);
 void vprint(const char *fmt, va_list argp);
 
