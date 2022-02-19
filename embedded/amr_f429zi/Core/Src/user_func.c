@@ -4,6 +4,7 @@
  *  Created on: Feb 14, 2022
  *      Author: JeHee Yu
  */
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
@@ -19,6 +20,12 @@ void vprint(const char *fmt, va_list argp) {
 		HAL_UART_Transmit(&huart3, (uint8_t*) string, strlen(string), 0xffffff);
 	}
 }
+
+/*
+ * Function 			: User_Printf
+ * Function Description : User_Printf message will logged Console.
+ *
+ */
 
 void User_Printf(const char *fmt, ...)
 {
