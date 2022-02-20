@@ -54,6 +54,13 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for StickTask */
+osThreadId_t StickTaskHandle;
+const osThreadAttr_t StickTask_attributes = {
+  .name = "StickTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityRealtime,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -61,6 +68,7 @@ const osThreadAttr_t defaultTask_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
+void StickStatusTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -94,6 +102,9 @@ void MX_FREERTOS_Init(void) {
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
+  /* creation of StickTask */
+  StickTaskHandle = osThreadNew(StickStatusTask, NULL, &StickTask_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -120,6 +131,32 @@ void StartDefaultTask(void *argument)
     osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
+}
+
+/* USER CODE BEGIN Header_StickStatusTask */
+/**
+* @brief Function implementing the StickTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StickStatusTask */
+void StickStatusTask(void *argument)
+{
+  /* USER CODE BEGIN StickStatusTask */
+  /* Infinite loop */
+  for(;;)
+  {
+	GPIO_PinState X_Status, Y_Status, Z_Status;
+
+	X_Status = HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_11);
+	Y_Status = HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_12);
+	Z_Status = HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_13);
+	User_Printf("X Axis : %s", X_Status);
+	User_Printf("Y Axis : %s", Y_Status);
+	User_Printf("Z Axis : %s", Z_Status);
+	osDelay(1);
+  }
+  /* USER CODE END StickStatusTask */
 }
 
 /* Private application code --------------------------------------------------*/

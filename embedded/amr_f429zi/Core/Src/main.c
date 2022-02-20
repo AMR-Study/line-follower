@@ -15,6 +15,7 @@
   *
   ******************************************************************************
   */
+#include "user_func.h"
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -23,7 +24,7 @@
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
-#include "user_func.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -191,9 +192,8 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
-  while (1)
-  {
-  }
+  User_Printf("error detected");
+
   /* USER CODE END Error_Handler_Debug */
 }
 
